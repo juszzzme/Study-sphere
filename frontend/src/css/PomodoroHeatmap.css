@@ -1,0 +1,189 @@
+.pomodoro-activity-container {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 12px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.pomodoro-activity-loading {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+  color: #888;
+}
+
+.pomodoro-activity-error {
+  color: #ff6e40;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #ff6e40;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+/* Bar Graph */
+.pomodoro-bar-graph {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  margin: 30px 0 10px 0;
+  padding-bottom: 30px;
+}
+
+/* Y-axis labels */
+.y-axis-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 5px;
+  font-size: 10px;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.y-label {
+  transform: translateY(-50%);
+  text-align: right;
+}
+
+/* Grid lines */
+.grid-lines {
+  position: absolute;
+  top: 0;
+  left: 30px;
+  right: 0;
+  height: 100%;
+  z-index: 1;
+}
+
+.grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px dashed rgba(128, 128, 128, 0.2);
+}
+
+/* Bar container */
+.bar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  padding-left: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.day-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  position: relative;
+}
+
+.day-bar {
+  width: 70%;
+  max-width: 30px;
+  border-radius: 4px 4px 0 0;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  bottom: 0;
+}
+
+.day-bar:hover {
+  opacity: 0.8;
+  transform: scaleY(1.02);
+}
+
+.day-bar.selected {
+  width: 80%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.day-label {
+  position: absolute;
+  bottom: -25px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Legend */
+.activity-legend {
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.7;
+  margin: 15px 0 10px 0;
+}
+
+/* Day Details */
+.day-details {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 12px;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.day-details h4 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.day-details p {
+  margin: 5px 0;
+}
+
+.day-details ul {
+  margin: 5px 0;
+  padding-left: 15px;
+  list-style-type: none;
+}
+
+.day-details li {
+  margin-bottom: 3px;
+}
+
+.session-notes {
+  font-style: italic;
+  opacity: 0.8;
+  font-size: 11px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .pomodoro-activity-container {
+    padding: 8px;
+  }
+  
+  .pomodoro-bar-graph {
+    height: 180px;
+  }
+  
+  .y-axis-labels {
+    font-size: 9px;
+  }
+  
+  .day-label {
+    font-size: 10px;
+  }
+  
+  .day-bar {
+    width: 60%;
+  }
+  
+  .activity-legend {
+    font-size: 10px;
+  }
+} 

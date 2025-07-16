@@ -1,0 +1,2367 @@
+/* PomodoroTimer.css - Animations and visual effects for the Pomodoro Timer */
+
+.pomodoro-container {
+  transition: all 0.3s ease;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Timer animations and styling */
+.pomodoro-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Timer animations and styling */
+.timer-section {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Timer Display */
+.timer-display {
+  width: 350px;
+  height: 450px;
+  margin: 0 auto;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 30px;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.timer-text {
+  text-align: center;
+  padding: 15px 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  width: 85%;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.timer-time {
+  font-size: 3.8rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  letter-spacing: 2px;
+}
+
+.timer-label {
+  font-size: 1.3rem;
+  margin-top: -5px;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+
+.timer-status {
+  font-size: 1.7rem;
+  margin-top: 8px;
+}
+
+/* Timer text styling */
+.timer-text {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  padding: 15px 40px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 15px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+}
+
+.timer-time {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+  letter-spacing: 3px;
+  transition: color 0.3s ease;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+}
+
+.timer-label {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.timer-status {
+  margin-top: 8px;
+  font-size: 1.5rem;
+  animation: pulse 2s infinite alternate;
+}
+
+/* Active state animations */
+.timer-active .timer-text {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Timer ending animations */
+.timer-ending .timer-text {
+  animation: shake 1.5s ease-in-out infinite;
+}
+
+.timer-ending .timer-time {
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Hourglass container */
+.hourglass {
+  position: relative;
+  width: 180px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Hourglass chambers (top and bottom) */
+.hourglass-chamber {
+  position: absolute;
+  width: 120px;
+  transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+}
+
+/* Top chamber specifics */
+.top-chamber {
+  top: 0;
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+  box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Bottom chamber specifics */
+.bottom-chamber {
+  bottom: 0;
+  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hourglass neck connecting the chambers */
+.hourglass-neck {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+  z-index: 5;
+}
+
+/* Hourglass outline */
+.hourglass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 100%;
+  border-left: 2px solid rgba(255, 255, 255, 0.7);
+  border-right: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px 20px 20px 20px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Top and bottom caps */
+.hourglass::after {
+  content: '';
+  position: absolute;
+  width: 140px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.hourglass::before, .hourglass::after {
+  animation: pulse-subtle 3s infinite alternate;
+}
+
+@keyframes pulse-subtle {
+  0% {
+    opacity: 0.6;
+    filter: brightness(0.9);
+  }
+  100% {
+    opacity: 0.8;
+    filter: brightness(1.1);
+  }
+}
+
+/* Add top and bottom caps */
+.hourglass::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+}
+
+.hourglass::after {
+  top: 0;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.hourglass::before {
+  bottom: 0;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Sand stream animation */
+.sand-stream {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 50px;
+  z-index: 3;
+}
+
+.sand-particle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: inherit;
+  border-radius: 50%;
+  animation: fall 1s ease-in infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes fall {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Timer text styling */
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  padding: 15px 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timer-time {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+}
+
+.timer-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.timer-status {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Active state animations */
+.timer-active .hourglass {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Timer ending animations */
+.timer-ending .sand-particle {
+  animation-duration: 0.5s;
+}
+
+.timer-ending .hourglass {
+  animation: shake 1.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-2px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(2px);
+  }
+}
+
+/* Variation for particles */
+.sand-particle:nth-child(odd) {
+  width: 3px;
+  height: 3px;
+}
+
+.sand-particle:nth-child(3n) {
+  animation-duration: 0.8s;
+}
+
+.sand-particle:nth-child(3n+1) {
+  animation-duration: 1.2s;
+}
+
+/* Make sand particles look like the chamber color */
+.sand-particle {
+  background-color: currentColor;
+}
+
+/* Add reflection */
+.hourglass::before {
+  overflow: hidden;
+}
+
+.hourglass::before::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+                             rgba(255, 255, 255, 0) 0%, 
+                             rgba(255, 255, 255, 0.1) 50%, 
+                             rgba(255, 255, 255, 0) 100%);
+  animation: reflection 8s linear infinite;
+}
+
+@keyframes reflection {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+/* Pure Minimal Hourglass Design */
+.pure-hourglass {
+  position: relative;
+  width: 160px;
+  height: 240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transform-style: preserve-3d;
+}
+
+/* Glass shape */
+.hourglass-top-glass,
+.hourglass-bottom-glass {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  z-index: 1;
+}
+
+.hourglass-top-glass {
+  top: 0;
+  border-top-left-radius: 80px; 
+  border-top-right-radius: 80px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-bottom: none;
+  box-shadow: inset 0 5px 10px rgba(255, 255, 255, 0.3);
+}
+
+.hourglass-bottom-glass {
+  bottom: 0;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-top: none;
+  box-shadow: inset 0 -5px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Sand chambers */
+.hourglass-top-sand,
+.hourglass-bottom-sand {
+  position: absolute;
+  width: 70%;
+  left: 15%;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.hourglass-top-sand {
+  top: 10%;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hourglass-bottom-sand {
+  bottom: 10%;
+  clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass reflection effect */
+.pure-hourglass::before {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+                             rgba(255, 255, 255, 0) 0%, 
+                             rgba(255, 255, 255, 0.05) 40%, 
+                             rgba(255, 255, 255, 0.1) 50%,
+                             rgba(255, 255, 255, 0.05) 60%,
+                             rgba(255, 255, 255, 0) 100%);
+  z-index: 4;
+  animation: glass-shine 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes glass-shine {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-40px) rotate(10deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(0px) rotate(0deg);
+  }
+  100% {
+    opacity: 0.3;
+    transform: translateX(40px) rotate(-10deg);
+  }
+}
+
+/* Sand flowing animation */
+.sand-flow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sand-grain {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
+  animation: grain-shimmer 3s ease-in-out infinite alternate;
+  transition: all 0.5s ease;
+}
+
+@keyframes grain-shimmer {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* Sand flow animation */
+.timer-active .top-sand {
+  animation: sand-shimmer 4s ease infinite;
+}
+
+.timer-active .bottom-sand {
+  animation: sand-rise 3s ease-out infinite;
+}
+
+@keyframes sand-shimmer {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+}
+
+@keyframes sand-rise {
+  0% {
+    transform: translateY(3px) scale(0.98);
+  }
+  50% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(3px) scale(0.98);
+  }
+}
+
+/* Enhance hourglass on active timer */
+.timer-active .hourglass-chamber {
+  box-shadow: 0 0 25px rgba(255, 213, 79, 0.2);
+}
+
+/* Enhance sand particles animation */
+.sand-particle {
+  animation-name: sand-fall;
+  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  animation-iteration-count: infinite;
+  animation-duration: 1.5s;
+}
+
+/* Add a ripple effect when sand hits bottom */
+.timer-active .bottom-sand::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 10px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.6) 0%,
+    transparent 70%
+  );
+  filter: blur(2px);
+  opacity: 0;
+  animation: ripple 1.5s ease-out infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translateX(-50%) scale(0.5);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Active state animations */
+.timer-active .pure-hourglass {
+  animation: gentle-float 6s ease-in-out infinite;
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(0.5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(3px) rotate(-0.5deg);
+  }
+}
+
+/* Style adjustments when the timer is ending */
+.timer-ending .sand-grain {
+  animation-duration: 0.8s;
+}
+
+.timer-ending .pure-hourglass {
+  animation: urgent-shake 1.5s ease-in-out infinite;
+}
+
+@keyframes urgent-shake {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(2px) rotate(-1deg);
+  }
+}
+
+/* Sand grain variations */
+.sand-grain:nth-child(3n) {
+  filter: blur(0.8px);
+  animation-duration: 1.3s;
+}
+
+.sand-grain:nth-child(3n+1) {
+  filter: blur(0.5px);
+  animation-duration: 1.7s;
+}
+
+.sand-grain:nth-child(3n+2) {
+  filter: blur(0.7px);
+  animation-duration: 1.5s;
+}
+
+/* Subtle glass aura */
+.pure-hourglass::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 80px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  z-index: 0;
+  animation: subtle-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes subtle-pulse {
+  0% {
+    opacity: 0.4;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    opacity: 0.6;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Timer time and label adjustments for the minimal design */
+.pure-hourglass ~ .timer-inner {
+  transform: translateY(0);
+}
+
+.pure-hourglass ~ .timer-inner .timer-time {
+  font-size: 3.2rem;
+  letter-spacing: 2px;
+}
+
+.pure-hourglass ~ .timer-inner .timer-label {
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+}
+
+/* Active timer effects */
+.timer-active .hourglass-frame {
+  animation: subtle-glow 3s infinite alternate;
+}
+
+@keyframes subtle-glow {
+  0% {
+    filter: brightness(0.95) drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
+  }
+  100% {
+    filter: brightness(1.05) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  }
+}
+
+/* Glass outline effect */
+.hourglass-frame::before, .hourglass-frame::after {
+  animation: glass-shine 4s infinite alternate;
+}
+
+@keyframes glass-shine {
+  0% {
+    opacity: 0.7;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    opacity: 0.9;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Connect the chambers with side walls */
+.hourglass-frame::before {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 
+              10px 5px 0 rgba(255, 255, 255, 0.6),
+              -10px 5px 0 rgba(255, 255, 255, 0.6);
+}
+
+.hourglass-frame::after {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 
+              10px -5px 0 rgba(255, 255, 255, 0.6),
+              -10px -5px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Timer ending effects */
+.timer-ending .hourglass-frame {
+  animation: urgent-glow 1s infinite alternate;
+}
+
+.timer-ending .sand-particle {
+  animation-duration: 0.5s;
+}
+
+@keyframes urgent-glow {
+  0% {
+    filter: brightness(1) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  }
+  100% {
+    filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
+  }
+}
+
+/* Sand particles animation */
+.hourglass-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  top: 30%;
+  opacity: 0.7;
+  animation: fall 2s ease-in infinite;
+  filter: blur(1px);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transform-style: preserve-3d;
+}
+
+@keyframes fall {
+  0% {
+    top: 30%;
+    opacity: 0.9;
+    transform: scale(1) rotate(0deg) translateZ(5px);
+    filter: brightness(1.2) blur(0.8px);
+  }
+  25% {
+    transform: scale(1.1) rotate(15deg) translateX(2px) translateZ(8px);
+    filter: brightness(1.3) blur(1px);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(0.9) rotate(45deg) translateX(-2px) translateZ(10px);
+    filter: brightness(1.4) blur(1.5px);
+  }
+  75% {
+    transform: scale(1) rotate(75deg) translateX(1px) translateZ(7px);
+    filter: brightness(1.2) blur(1px);
+  }
+  100% {
+    top: 65%;
+    opacity: 0.8;
+    transform: scale(0.8) rotate(90deg) translateZ(3px);
+    filter: brightness(1) blur(0.8px);
+  }
+}
+
+/* Add a hypnotic pulsing glow to particles */
+.timer-active .particle {
+  animation: fall 2s ease-in infinite, particle-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes particle-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    filter: blur(1px) brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    filter: blur(1.2px) brightness(1.2);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    filter: blur(1.5px) brightness(1.4);
+  }
+}
+
+/* Make the hourglass glass effect more visible */
+.hourglass-container::before {
+  content: '';
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  z-index: 4;
+  pointer-events: none;
+  transform: translateZ(5px);
+  animation: glass-shimmer 10s linear infinite;
+}
+
+@keyframes glass-shimmer {
+  0% {
+    opacity: 0.4;
+    transform: rotate(0deg) scale(1) translateZ(5px);
+    background: radial-gradient(
+      ellipse at 30% 30%,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.08) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
+  }
+  25% {
+    opacity: 0.5;
+    transform: rotate(45deg) scale(1.02) translateZ(8px);
+  }
+  50% {
+    opacity: 0.3;
+    transform: rotate(180deg) scale(1.05) translateZ(10px);
+    background: radial-gradient(
+      ellipse at 70% 70%,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.1) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
+  }
+  75% {
+    opacity: 0.5;
+    transform: rotate(270deg) scale(1.02) translateZ(8px);
+  }
+  100% {
+    opacity: 0.4;
+    transform: rotate(360deg) scale(1) translateZ(5px);
+    background: radial-gradient(
+      ellipse at 30% 30%,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.08) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
+  }
+}
+
+/* Animation for when timer is active */
+.timer-active .hourglass-top,
+.timer-active .hourglass-bottom {
+  animation-duration: 2s;
+}
+
+.timer-active .hourglass-particles .particle {
+  animation-duration: 1.5s;
+}
+
+.timer-active .hourglass-container {
+  animation: subtle-tilt 10s ease-in-out infinite alternate;
+}
+
+/* Add a subtle breathing animation to the timer inner when active */
+.timer-active .timer-inner {
+  animation: breathing 4s ease-in-out infinite;
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes subtle-tilt {
+  0% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
+}
+
+/* Enhanced animation for when timer is ending */
+.timer-ending .hourglass-container {
+  animation: urgent-tilt 1.5s ease-in-out infinite alternate;
+}
+
+.timer-ending .particle {
+  animation-duration: 1s !important;
+}
+
+@keyframes urgent-tilt {
+  0% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(0deg) translateY(-3px);
+  }
+  100% {
+    transform: rotate(2deg);
+  }
+}
+
+/* Enhanced decorative tick marks around the timer */
+.timer-circle::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    transparent 0deg 5.8deg,
+    rgba(0, 0, 0, 0.07) 5.8deg 6deg,
+    transparent 6deg 30deg,
+    rgba(0, 0, 0, 0.1) 30deg 30.2deg
+  );
+  opacity: 0.9;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+  animation: rotate-ticks 120s linear infinite;
+  z-index: 1;
+}
+
+/* Add decorative hour markers */
+.timer-circle::after {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  left: -5%;
+  border-radius: 50%;
+  background: conic-gradient(
+    transparent 0deg 29deg,
+    rgba(255, 255, 255, 0.2) 29deg 31deg,
+    transparent 31deg 59deg,
+    rgba(255, 255, 255, 0.2) 59deg 61deg,
+    transparent 61deg 89deg,
+    rgba(255, 255, 255, 0.2) 89deg 91deg,
+    transparent 91deg 119deg,
+    rgba(255, 255, 255, 0.2) 119deg 121deg,
+    transparent 121deg 149deg,
+    rgba(255, 255, 255, 0.2) 149deg 151deg,
+    transparent 151deg 179deg,
+    rgba(255, 255, 255, 0.2) 179deg 181deg,
+    transparent 181deg 209deg,
+    rgba(255, 255, 255, 0.2) 209deg 211deg,
+    transparent 211deg 239deg,
+    rgba(255, 255, 255, 0.2) 239deg 241deg,
+    transparent 241deg 269deg,
+    rgba(255, 255, 255, 0.2) 269deg 271deg,
+    transparent 271deg 299deg,
+    rgba(255, 255, 255, 0.2) 299deg 301deg,
+    transparent 301deg 329deg,
+    rgba(255, 255, 255, 0.2) 329deg 331deg,
+    transparent 331deg 359deg,
+    rgba(255, 255, 255, 0.2) 359deg 361deg
+  );
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
+  animation: rotate-markers 180s linear infinite reverse;
+}
+
+@keyframes rotate-markers {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-ticks {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.timer-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: all 1s linear;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+  /* Enhanced glass-like reflection with gradient glow */
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.2) 100%);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.timer-inner {
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  box-shadow: 
+    inset 0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 -2px 10px rgba(255, 255, 255, 0.2),
+    0 0 15px rgba(255, 255, 255, 0.05),
+    0 0 30px rgba(255, 255, 255, 0.03);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 70%);
+  transform: translateZ(10px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Add subtle inner shadow to create depth */
+.timer-inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 
+    inset 0 2px 10px rgba(0, 0, 0, 0.15),
+    inset 0 -2px 10px rgba(255, 255, 255, 0.1);
+  opacity: 0.7;
+  pointer-events: none;
+  background: radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.05), transparent 70%);
+}
+
+.timer-time {
+  font-size: 3.8rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #222 0%, #555 50%, #777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.15), 0 0 10px rgba(255, 255, 255, 0.1);
+  letter-spacing: 3px;
+  transform: translateZ(20px);
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+  animation: pulse-text 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-text {
+  0% {
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+    letter-spacing: 3px;
+  }
+  100% {
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.3));
+    letter-spacing: 3.2px;
+  }
+}
+
+.dark-mode .timer-time {
+  background: linear-gradient(135deg, #f0f0f0 0%, #d0d0d0 50%, #a0a0a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.timer-label {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #444 0%, #777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transform: translateZ(15px);
+}
+
+.dark-mode .timer-label {
+  background: linear-gradient(135deg, #d0d0d0 0%, #a0a0a0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Timer state animations */
+.timer-active .timer-inner {
+  animation: pulse 3s infinite alternate;
+}
+
+.timer-active .timer-progress {
+  animation: progress-pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.98) translateZ(10px);
+    box-shadow: 
+      inset 0 4px 15px rgba(0, 0, 0, 0.1),
+      inset 0 -2px 10px rgba(255, 255, 255, 0.2),
+      0 0 15px rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    transform: scale(0.99) translateZ(12px);
+    box-shadow: 
+      inset 0 4px 12px rgba(0, 0, 0, 0.08),
+      inset 0 -2px 8px rgba(255, 255, 255, 0.25),
+      0 0 20px rgba(255, 255, 255, 0.08);
+  }
+  100% {
+    transform: scale(1) translateZ(15px);
+    box-shadow: 
+      inset 0 4px 10px rgba(0, 0, 0, 0.05),
+      inset 0 -2px 6px rgba(255, 255, 255, 0.3),
+      0 0 25px rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes progress-pulse {
+  0% {
+    filter: brightness(0.95) drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+  }
+  50% {
+    filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+  }
+  100% {
+    filter: brightness(1.05) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+  }
+}
+
+.timer-ending .timer-time {
+  animation: flashTime 1s infinite;
+  background: linear-gradient(135deg, #ff6e40 0%, #ff9e40 50%, #ff6e40 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255, 110, 64, 0.7);
+}
+
+@keyframes flashTime {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) translateZ(20px);
+    text-shadow: 0 0 15px rgba(255, 110, 64, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05) translateZ(25px);
+    text-shadow: 0 0 20px rgba(255, 110, 64, 0.9), 0 0 30px rgba(255, 110, 64, 0.5);
+  }
+}
+
+.timer-ending .timer-circle {
+  animation: glowPulse 1s infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 15px rgba(255, 110, 64, 0.3);
+  }
+  100% {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 30px rgba(255, 110, 64, 0.6);
+  }
+}
+
+.timer-break .timer-inner {
+  background-color: rgba(var(--yellow-rgb), 0.1) !important;
+}
+
+.timer-focus .timer-inner {
+  background-color: rgba(var(--coral-rgb), 0.05) !important;
+}
+
+/* Add a subtle glow effect for active timer */
+.timer-active.timer-focus .timer-circle {
+  filter: drop-shadow(0 0 15px rgba(var(--coral-rgb), 0.4));
+  animation: focus-glow 4s infinite alternate;
+}
+
+.timer-active.timer-break .timer-circle {
+  filter: drop-shadow(0 0 15px rgba(var(--yellow-rgb), 0.4));
+  animation: break-glow 4s infinite alternate;
+}
+
+@keyframes focus-glow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(var(--coral-rgb), 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(var(--coral-rgb), 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(var(--coral-rgb), 0.5));
+  }
+}
+
+@keyframes break-glow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(var(--yellow-rgb), 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(var(--yellow-rgb), 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(var(--yellow-rgb), 0.5));
+  }
+}
+
+/* Controls styling */
+.timer-controls {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.control-button {
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-button:active {
+  transform: translateY(1px);
+}
+
+.start-button::before, .pause-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+  z-index: -1;
+}
+
+.start-button::after, .pause-button::after {
+  content: '';
+  position: absolute;
+  width: 30%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: all 0.5s ease;
+}
+
+.start-button:hover::after, .pause-button:hover::after {
+  left: 100%;
+}
+
+/* Session info styling */
+.session-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.session-type, .session-count, .total-sessions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.session-value {
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Completion effect */
+.completion-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.completion-message {
+  background-color: var(--card-bg, #fff);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 80%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.completion-icon {
+  font-size: 50px;
+  margin-bottom: 20px;
+  animation: spin 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(-30deg) scale(0.5);
+  }
+  to {
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* Group study toggle */
+.group-study-toggle {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-button {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-button.active {
+  animation: pulseButton 2s infinite alternate;
+}
+
+@keyframes pulseButton {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--coral-rgb), 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--coral-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--coral-rgb), 0);
+  }
+}
+
+.toggle-description {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* Friend activity styling */
+.side-section {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.friend-activity-section {
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.notification-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.notification-toggle:hover {
+  transform: scale(1.1);
+}
+
+.friend-activity-feed {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.friend-activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.friend-activity-item.new-activity {
+  animation: slideInFade 0.5s ease-out, highlight 2s ease;
+}
+
+@keyframes slideInFade {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes highlight {
+  0% {
+    background-color: rgba(var(--coral-rgb), 0.2);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.friend-activity-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(var(--primary-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.friend-activity-content {
+  flex: 1;
+}
+
+.friend-name {
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.friend-action {
+  font-size: 0.9rem;
+  margin: 0 0 5px 0;
+}
+
+.friend-time {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.friend-activity-empty {
+  text-align: center;
+  padding: 20px 0;
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+/* Notification styling */
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  background-color: var(--card-bg, #fff);
+  color: var(--text-color, #333);
+  border-left: 4px solid var(--coral-color, #ff6e40);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-width: 300px;
+  animation: slideUp 0.3s ease-out, fadeOut 0.3s ease-in 2.7s;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Achievement animation */
+.achievement {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--card-bg, #fff);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-width: 350px;
+  animation: slideIn 0.5s ease-out, fadeOut 0.3s ease-in 4.7s;
+  z-index: 1000;
+}
+
+.achievement-icon {
+  font-size: 2rem;
+  animation: bounce 0.5s ease infinite alternate;
+}
+
+.achievement-content {
+  flex: 1;
+}
+
+.achievement-title {
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.achievement-description {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .timer-display {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .timer-time {
+    font-size: 2.5rem;
+  }
+  
+  .pomodoro-main {
+    flex-direction: column;
+  }
+  
+  .control-button {
+    padding: 10px 20px;
+    min-width: 80px;
+  }
+  
+  .friend-activity-section {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer-display {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .timer-time {
+    font-size: 2rem;
+  }
+  
+  .control-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Add status indicator styling */
+.timer-status-indicator {
+  position: absolute;
+  bottom: 20%;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: fadeInOut 2s infinite alternate;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* Add 3D effect to the timer */
+.timer-circle {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Add subtle rotation animation for active timer */
+.timer-active .timer-circle {
+  animation: subtle-rotate 20s linear infinite;
+  position: relative;
+}
+
+/* Add particle effect around the timer */
+.timer-active .timer-display::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 15px 2px rgba(255, 255, 255, 0.1),
+    0 0 20px 5px rgba(255, 255, 255, 0.05),
+    0 0 25px 10px rgba(255, 255, 255, 0.025);
+  filter: blur(5px);
+  animation: pulse-glow 3s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.5;
+    box-shadow: 
+      0 0 15px 2px rgba(255, 255, 255, 0.1),
+      0 0 20px 5px rgba(255, 255, 255, 0.05),
+      0 0 25px 10px rgba(255, 255, 255, 0.025);
+  }
+  100% {
+    opacity: 0.8;
+    box-shadow: 
+      0 0 20px 5px rgba(255, 255, 255, 0.15),
+      0 0 30px 10px rgba(255, 255, 255, 0.1),
+      0 0 40px 15px rgba(255, 255, 255, 0.05);
+  }
+}
+
+@keyframes subtle-rotate {
+  0% {
+    transform: rotateY(0deg) rotateX(2deg);
+  }
+  25% {
+    transform: rotateY(3deg) rotateX(0deg);
+  }
+  50% {
+    transform: rotateY(0deg) rotateX(-2deg);
+  }
+  75% {
+    transform: rotateY(-3deg) rotateX(0deg);
+  }
+  100% {
+    transform: rotateY(0deg) rotateX(2deg);
+  }
+}
+
+/* Add a subtle scale effect when hovering over the timer */
+.timer-display:hover .timer-inner {
+  transform: scale(1.03) translateZ(25px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    inset 0 4px 15px rgba(0, 0, 0, 0.08),
+    inset 0 -2px 10px rgba(255, 255, 255, 0.25),
+    0 0 20px rgba(255, 255, 255, 0.15),
+    0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+.timer-display:hover .timer-time {
+  transform: translateZ(25px);
+  letter-spacing: 3.5px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.timer-display:hover .timer-circle::before {
+  animation-duration: 60s;
+}
+
+/* Add a subtle glow to the timer when it's almost done */
+.timer-ending .timer-circle::before {
+  animation: glow-pulse 1s infinite alternate;
+}
+
+@keyframes glow-pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(var(--coral-rgb), 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(var(--coral-rgb), 0.6);
+  }
+}
+
+/* Enhanced button styles with 3D effects */
+.control-button {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.control-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.control-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15), 0 0 10px rgba(255, 255, 255, 0.1);
+  letter-spacing: 1.2px;
+}
+
+.control-button:hover::before {
+  left: 100%;
+}
+
+.control-button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease;
+}
+
+/* Ornate Hourglass */
+.ornate-hourglass {
+  position: relative;
+  width: 240px;
+  height: 380px;
+  margin: 30px auto 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.6));
+  transition: transform 0.5s ease;
+  transform: scale(1.15);
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  padding: 10px;
+}
+
+.timer-active .ornate-hourglass {
+  animation: gentle-float 5s ease-in-out infinite;
+}
+
+.hourglass-cap {
+  position: absolute;
+  width: 130px;
+  height: 25px;
+  background: linear-gradient(90deg, #a67c00, #f6e27a, #a67c00);
+  border-radius: 8px;
+  z-index: 3;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.top-cap {
+  top: 0;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.5);
+  background: linear-gradient(to bottom, #f6e27a, #d4af37, #a67c00);
+}
+
+.bottom-cap {
+  bottom: 0;
+  box-shadow: 0 -8px 15px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.5);
+  background: linear-gradient(to top, #f6e27a, #d4af37, #a67c00);
+}
+
+.hourglass-chamber {
+  position: absolute;
+  width: 90px;
+  height: 160px;
+  background-color: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.top-chamber {
+  top: 25px;
+  border-radius: 45px 45px 5px 5px;
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.9), 0 0 15px rgba(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.bottom-chamber {
+  bottom: 25px;
+  border-radius: 5px 5px 45px 45px;
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.9), 0 0 15px rgba(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.chamber-sand {
+  width: 100%;
+  transition: height 1s linear, opacity 1s ease;
+  position: relative;
+  border-radius: inherit;
+}
+
+.top-sand {
+  border-radius: 43px 43px 3px 3px;
+  transition: height 1s linear, opacity 1s ease;
+  background: linear-gradient(to bottom, 
+    rgba(255, 213, 79, 1) 0%,
+    rgba(255, 213, 79, 0.9) 40%,
+    rgba(255, 213, 79, 0.8) 80%,
+    rgba(255, 213, 79, 0.7) 100%
+  );
+  box-shadow: inset 0 5px 20px rgba(255, 255, 255, 0.5);
+}
+
+.bottom-sand {
+  border-radius: 3px 3px 43px 43px;
+  transition: height 1s linear, opacity 1s ease;
+  background: linear-gradient(to top, 
+    rgba(255, 213, 79, 1) 0%,
+    rgba(255, 213, 79, 0.9) 40%,
+    rgba(255, 213, 79, 0.8) 80%,
+    rgba(255, 213, 79, 0.7) 100%
+  );
+  box-shadow: inset 0 -5px 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Glowing effect for active timer */
+.timer-active .chamber-sand {
+  box-shadow: 0 0 25px rgba(255, 213, 79, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.hourglass-middle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+}
+
+.middle-ornament {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4af37, #f6e27a, #d4af37);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.9), inset 0 0 8px rgba(255, 255, 255, 0.9);
+  animation: spin-glow 12s linear infinite;
+}
+
+@keyframes spin-glow {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 1), inset 0 0 12px rgba(255, 255, 255, 1);
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), inset 0 0 8px rgba(255, 255, 255, 0.8);
+  }
+}
+
+.ornate-decorations {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 70px;
+  height: 240px;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+  animation: decoration-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes decoration-glow {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+    opacity: 0.7;
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.7));
+    opacity: 0.9;
+  }
+}
+
+.left-decorations {
+  left: -60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='240' viewBox='0 0 70 240' fill='none'%3E%3Cpath d='M50 20C40 50 20 65 10 80C25 110 45 140 50 170C40 190 20 210 10 230' stroke='%23d4af37' stroke-width='3' stroke-linecap='round' stroke-dasharray='4 8'/%3E%3Ccircle cx='50' cy='20' r='5' fill='%23f6e27a'/%3E%3Ccircle cx='10' cy='80' r='5' fill='%23f6e27a'/%3E%3Ccircle cx='50' cy='170' r='5' fill='%23f6e27a'/%3E%3Ccircle cx='10' cy='230' r='5' fill='%23f6e27a'/%3E%3C/svg%3E");
+}
+
+.right-decorations {
+  right: -60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='240' viewBox='0 0 70 240' fill='none'%3E%3Cpath d='M20 20C30 50 50 65 60 80C45 110 25 140 20 170C30 190 50 210 60 230' stroke='%23d4af37' stroke-width='3' stroke-linecap='round' stroke-dasharray='4 8'/%3E%3Ccircle cx='20' cy='20' r='5' fill='%23f6e27a'/%3E%3Ccircle cx='60' cy='80' r='5' fill='%23f6e27a'/%3E%3Ccircle cx='20' cy='170' r='5' fill='%23f6e27a'/%3E%3Ccircle cx='60' cy='230' r='5' fill='%23f6e27a'/%3E%3C/svg%3E");
+}
+
+.falling-sand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 40px;
+  z-index: 4;
+  overflow: hidden;
+  filter: drop-shadow(0 0 5px rgba(255, 213, 79, 0.6));
+}
+
+.sand-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: sand-fall 1.5s cubic-bezier(0.4, 0, 1, 1) infinite;
+  box-shadow: 0 0 8px rgba(255, 213, 79, 0.9);
+  background: radial-gradient(circle at center, rgba(255, 213, 79, 1) 0%, rgba(255, 213, 79, 0.8) 100%);
+}
+
+@keyframes sand-fall {
+  0% {
+    top: -10px;
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg) translateX(0);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg) translateX(-2px);
+  }
+  40% {
+    transform: scale(1.2) rotate(90deg) translateX(2px);
+  }
+  70% {
+    transform: scale(1) rotate(135deg) translateX(-1px);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(0.9) rotate(170deg) translateX(1px);
+  }
+  100% {
+    top: 40px;
+    opacity: 0;
+    transform: scale(0.8) rotate(180deg) translateX(0);
+  }
+}
+
+@keyframes gentle-float {
+  0% {
+    transform: translateY(0) scale(1.15);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.15);
+  }
+  100% {
+    transform: translateY(0) scale(1.15);
+  }
+}
+
+/* Enhanced sand particles in bottom chamber */
+.timer-active .bottom-sand::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  top: 0;
+  left: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  filter: blur(4px);
+  animation: sand-settle 1.5s ease-out infinite;
+}
+
+@keyframes sand-settle {
+  0% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.2);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+    filter: blur(3px);
+  }
+}
+
+/* Additional sand particles for realism */
+.timer-active .sand-particle {
+  box-shadow: 0 0 10px rgba(255, 213, 79, 1);
+}
+
+/* Glass shine effect */
+.top-chamber::after, 
+.bottom-chamber::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.6) 0%, 
+    rgba(255, 255, 255, 0) 50%, 
+    rgba(255, 255, 255, 0.3) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: glass-shine 8s ease-in-out infinite;
+}
+
+@keyframes glass-shine {
+  0%, 100% {
+    opacity: 0.6;
+    background-position: 0% 0%;
+  }
+  50% {
+    opacity: 0.9;
+    background-position: 100% 100%;
+  }
+}
+
+/* Edge lighting */
+.hourglass-chamber::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Redesigned Timer Controls */
+.timer-controls {
+  display: flex;
+  gap: 25px;
+  margin-top: 30px;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.timer-button {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ff9f59, #ff6e40);
+  border: none;
+  color: white;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(255, 110, 64, 0.5), 0 0 15px rgba(255, 110, 64, 0.3);
+  transition: all 0.3s cubic-bezier(0.17, 0.67, 0.45, 1.29);
+  position: relative;
+  overflow: hidden;
+}
+
+.timer-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.timer-button::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 110, 64, 0.7), rgba(255, 110, 64, 0.9));
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.timer-button:hover::before {
+  left: 100%;
+}
+
+.timer-button:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(255, 110, 64, 0.6), 0 0 20px rgba(255, 110, 64, 0.4);
+}
+
+.timer-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 5px 15px rgba(255, 110, 64, 0.5);
+}
+
+.mode-button {
+  height: 50px;
+  padding: 0 28px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(10px);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.17, 0.67, 0.45, 1.29);
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.mode-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  animation: mode-button-shimmer 3s infinite;
+}
+
+@keyframes mode-button-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.mode-button:hover::before {
+  left: 100%;
+}
+
+.mode-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.focus-mode {
+  border-left: 3px solid #ff6e40;
+}
+
+.break-mode {
+  border-left: 3px solid #ffc13b;
+}
+
+.small-clock {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  margin-top: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+.small-clock::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}

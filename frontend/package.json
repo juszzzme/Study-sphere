@@ -1,0 +1,62 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/plugin-transform-async-generator-functions": "^7.26.8",
+    "@babel/plugin-transform-class-properties": "^7.25.9",
+    "@babel/plugin-transform-dynamic-import": "^7.25.9",
+    "@babel/plugin-transform-json-strings": "^7.25.9",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.26.6",
+    "@babel/plugin-transform-numeric-separator": "^7.25.9",
+    "@babel/plugin-transform-object-rest-spread": "^7.25.9",
+    "@babel/plugin-transform-optional-catch-binding": "^7.25.9",
+    "@babel/plugin-transform-optional-chaining": "^7.25.9",
+    "@babel/plugin-transform-private-methods": "^7.25.9",
+    "@babel/plugin-transform-private-property-in-object": "^7.25.9",
+    "@babel/plugin-transform-unicode-property-regex": "^7.25.9",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@jridgewell/sourcemap-codec": "^1.5.0",
+    "@mui/material": "^6.4.7",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.8.2",
+    "core-js": "^3.41.0",
+    "eta": "^3.5.0",
+    "node-fetch": "^2.7.0",
+    "nth-check": "^2.1.1",
+    "postcss": "^8.5.3",
+    "react": "^18.2.0",
+    "react-calendar-heatmap": "^1.10.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^6.30.0",
+    "react-script": "^2.0.5",
+    "react-scripts": "^5.0.1",
+    "react-toastify": "^11.0.5",
+    "react-tooltip": "^5.28.0",
+    "serialize-javascript": "^6.0.2",
+    "socket.io-client": "^4.8.1",
+    "uuid": "^7.0.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
