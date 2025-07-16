@@ -2,8 +2,6 @@
 
 A comprehensive study platform designed to enhance learning efficiency through gamification, real-time collaboration, and intelligent resource management.
 
-![Study Sphere Banner](https://via.placeholder.com/800x200/4F46E5/FFFFFF?text=Study+Sphere)
-
 ## 🌟 Features
 
 ### 📚 Core Learning Tools
