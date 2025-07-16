@@ -190,9 +190,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- Email: support@studysphere.edu
-- GitHub Issues: [Create an issue](https://github.com/YOUR_USERNAME/study-sphere/issues)
-- Documentation: [Wiki](https://github.com/YOUR_USERNAME/study-sphere/wiki)
+- Email: kmd.zaheer2006@gmail.com
+- GitHub Issues: [Create an issue](https://github.com/juszzzme/study-sphere/issues)
+- Documentation: [Wiki](https://github.com/juszzzme/study-sphere/wiki)
 
 ---
 
